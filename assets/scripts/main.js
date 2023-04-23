@@ -1,9 +1,8 @@
-let tempo = new Number();
-tempo = 300;
+const sessao = document.getElementById("sessao");
+const botaoIniciar = document.getElementById("iniciar");
+let tempo = 300;
 
 function startCountdown() {
-  sessao = document.getElementById("sessao");
-
   if (tempo - 1 >= 0) {
     let min = parseInt(tempo / 60);
     let seg = tempo % 60;
@@ -19,10 +18,10 @@ function startCountdown() {
     sessao.innerHTML = horaImprimivel;
 
     tempo--;
-    setTimeout("startCountdown()", 1000);
+    setTimeout(`{startCountdown(${tempo})}`, 1000);
   } else {
     sessao.innerHTML = "Acabou o tempo!";
   }
 }
 
-startCountdown();
+botaoIniciar.addEventListener("click", startCountdown);
